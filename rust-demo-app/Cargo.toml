@@ -4,4 +4,6 @@ version = "0.1.0"
 authors = ["Quentin ADAM <quentin.adam@waxzce.org>"]
 
 [dependencies]
-iron = "0.4.0"
+iron = "0.5"
+staticfile = "0.4.0"
+mount = "0.3"
