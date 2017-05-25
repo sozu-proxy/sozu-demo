@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: pokemon
+spec:
+  rules:
+  - host: pikachu.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: pikachu
+          servicePort: 80
+  - host: mewtwo.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: mewtwo
+          servicePort: 80
+  - host: nidoqueen.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nidoqueen
+          servicePort: 80

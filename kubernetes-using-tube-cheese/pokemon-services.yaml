@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pikachu
+spec:
+  ports:
+  - name: http
+    targetPort: 80
+    port: 80
+  selector:
+    app: pokemon
+    task: pikachu
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mewtwo
+spec:
+  ports:
+  - name: http
+    targetPort: 80
+    port: 80
+  selector:
+    app: pokemon
+    task: mewtwo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nidoqueen
+spec:
+  ports:
+  - name: http
+    targetPort: 80
+    port: 80
+  selector:
+    app: pokemon
+    task: nidoqueen

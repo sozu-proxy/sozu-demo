@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: pokemons
+  annotations:
+    traefik.frontend.rule.type: pathprefixstrip
+spec:
+  rules:
+  - host: pokemons.local
+    http:
+      paths:
+      - path: /pikachu
+        backend:
+          serviceName: pikachu
+          servicePort: http
+      - path: /mewtwo
+        backend:
+          serviceName: mewtwo
+          servicePort: http
+      - path: /nidoqueen
+        backend:
+          serviceName: nidoqueen
+          servicePort: http

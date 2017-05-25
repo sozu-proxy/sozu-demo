@@ -1,0 +1,126 @@
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: pikachu
+  labels:
+    app: pokemon
+    pokemon: pikachu
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pokemon
+      task: pikachu
+  template:
+    metadata:
+      labels:
+        app: pokemon
+        task: pikachu
+        version: v0.0.1
+    spec:
+      containers:
+      - name: pokemon
+        image: clevercloud/demo-pokemon
+        resources:
+          requests:
+            cpu: 100m
+            memory: 50Mi
+          limits:
+            cpu: 100m
+            memory: 50Mi
+        ports:
+        - containerPort: 80
+        env:
+        - name: PORT
+          value: "80"
+        - name: POKEMON_NUMBER
+          value: "25"
+        - name: MESSAGE
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: mewtwo
+  labels:
+    app: pokemon
+    pokemon: mewtwo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pokemon
+      task: mewtwo
+  template:
+    metadata:
+      labels:
+        app: pokemon
+        task: mewtwo
+        version: v0.0.1
+    spec:
+      containers:
+      - name: pokemon
+        image: clevercloud/demo-pokemon
+        resources:
+          requests:
+            cpu: 100m
+            memory: 50Mi
+          limits:
+            cpu: 100m
+            memory: 50Mi
+        ports:
+        - containerPort: 80
+        env:
+        - name: PORT
+          value: "80"
+        - name: POKEMON_NUMBER
+          value: "150"
+        - name: MESSAGE
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: nidoqueen
+  labels:
+    app: pokemon
+    pokemon: nidoqueen
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pokemon
+      task: nidoqueen
+  template:
+    metadata:
+      labels:
+        app: pokemon
+        task: nidoqueen
+        version: v0.0.1
+    spec:
+      containers:
+      - name: pokemon
+        image: clevercloud/demo-pokemon
+        resources:
+          requests:
+            cpu: 100m
+            memory: 50Mi
+          limits:
+            cpu: 100m
+            memory: 50Mi
+        ports:
+        - containerPort: 80
+        env:
+        - name: PORT
+          value: "80"
+        - name: POKEMON_NUMBER
+          value: "31"
+        - name: MESSAGE
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
