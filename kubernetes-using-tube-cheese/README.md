@@ -44,6 +44,6 @@ Open browser and try pikachu.local mewtwo.local nidoqueen.local to discover the 
 kubectl apply -f i-like-pokemon-ingress.yaml
 ```
 
-Now we can use i-like-pikachu.local and even http://i-like-pikachu.local/nidoqueen-to ;-)
+Now we can use i-like-pikachu.local and even http://i-like-pikachu.local/nidoqueen-too ;-)
 
 Best for now is to open all files and play with it ;-)
