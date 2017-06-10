@@ -14,7 +14,6 @@ services:
     labels:
       - "traefik.enable=false"
 
-
   sozu-manager:
     image: geal/manager
     container_name: tube-cheese
@@ -44,7 +43,6 @@ services:
 
 volumes:
   sozu-socket:
-  portainer-data:
 
 
 
