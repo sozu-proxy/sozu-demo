@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+
+  pikachu:
+    container_name: pikachu
+    image: "clevercloud/demo-pokemon"
+    environment:
+      - POKEMON_NUMBER=25
+      - MESSAGE="Pika Pika"
+    labels:
+      # comment the line if you use xip.io
+      - "traefik.frontend.rule=Host:pikachu.local"
+
+  mewtwo:
+    container_name: mewtwo
+    image: "clevercloud/demo-pokemon"
+    environment:
+      - POKEMON_NUMBER=150
+      - MESSAGE="Mew Mew"
+    labels:
+      # comment the line if you use xip.io
+      - "traefik.frontend.rule=Host:mewtwo.local"
+
+  nidoqueen:
+    container_name: nidoqueen
+    image: "clevercloud/demo-pokemon"
+    environment:
+      - POKEMON_NUMBER=31
+      - MESSAGE="Nido Nido"
+    labels:
+      # comment the line if you use xip.io
+      - "traefik.frontend.rule=Host:nidoqueen.local"

@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+
+  sozu:
+    image: geal/sozu
+    container_name: sozu
+    command: ["start", "-c", "/etc/sozu/sozu.toml"]
+    volumes:
+      - sozu-socket:/var/run/sozu
+      - ./config/sozu.toml:/etc/sozu/sozu.toml
+    ports:
+      - "80:80"
+    labels:
+      - "traefik.enable=false"
+
+
+  sozu-manager:
+    image: geal/manager
+    container_name: tube-cheese
+    command: ["--config", "/etc/sozu/sozu.toml", "--api", "http://traefik:8080/api"]
+    volumes:
+      - sozu-socket:/var/run/sozu
+      - ./config/sozu.toml:/etc/sozu/sozu.toml
+    depends_on:
+      - sozu
+      - traefik
+    labels:
+      - "traefik.enable=false"
+
+  traefik:
+    image: traefik
+    container_name: traefik
+    command: --web --docker --docker.domain=local --logLevel=DEBUG --docker.exposedbydefault=true --docker.watch=true
+    # if you don't want to declare manually entries into /etc/hosts, you can use the awesome xip.io
+    # command: --web --docker --docker.domain=127.0.0.1.xip.io --logLevel=DEBUG --docker.exposedbydefault=true --docker.watch=true
+    ports:
+      - "9090:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./config/traefik.toml:/traefik.toml
+    labels:
+      - "traefik.enable=false"
+
+volumes:
+  sozu-socket:
+  portainer-data:
+
+
+
